@@ -1,0 +1,48 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 200px;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    /* padding: 8px; */
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<meta charset="UTF-8">
+<title>Clients</title>
+
+    <table id="clients" style="width:100%">
+        <tbody>
+            <tr>
+                <th>Tone Ratio 1</th>
+                <th>Tone Ratio 2</th>
+                <th>Tone Ratio 3</th>
+                <th>Mode</th>
+            </tr>
+        </tbody>
+    </table>
+    <table id="clients" style="width:100%">
+        <tbody>
+
+        {% if result %}
+        {% for row in result %}
+
+            <tr>
+                <td> {{ row.tone1 }}</td>
+                <td> {{ row.tone2 }}</td>
+                <td> {{ row.tone3 }}</td>
+                <td> {{ row.tone_key }}</td>
+            </tr>
+
+    {% endfor %}
+    {% endif %}
+
+        </tbody>
+    </table>

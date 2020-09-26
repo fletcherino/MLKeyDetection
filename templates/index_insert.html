@@ -1,0 +1,58 @@
+{%extends "bootstrap/base.html" %}
+
+{% block content %}
+<!-- Main Content Is Here -->
+     <div class="container">
+      <div class="jumbotron">
+         <h1 class="display-3">Major/Minor Determination</h1>
+          <p>Detect whether 3 tones create either a major or minor chord</p>
+          <p><a href="{{ url_for('index')}}" type="button" class="btn btn-primary" > Refresh</a></p>
+        </div>
+
+
+      <div class="container">
+        <!-- <form action="{{ url_for('dataupload1') }}" method="POST" class="form-group">
+          <input type="file" name="csv_data">
+          <input type="submit" class="btn btn-primary mb-2">
+          <input type="reset" value="Reset" class="btn btn-danger mb-2">
+        </form> -->
+        <p>Check data against ML algorithms:</p>
+        <form action="{{ url_for('dataupload1') }}" method="POST" class="form-group">
+            <input name="freq1" placeholder="Frequency 1">
+            <input name="freq2" placeholder="Frequency 2">
+            <input name="freq3" placeholder="Frequency 3">
+            <input type="submit" value ="Check" class="btn btn-primary mb-2">
+        </form>
+
+        <p>Insert data into database:</p>
+        <form action="{{ url_for('insert_tone') }}" method="POST" class="form-group">
+            <input name="freq1ins" placeholder="Frequency 1">
+            <input name="freq2ins" placeholder="Frequency 2">
+            <input name="freq3ins" placeholder="Frequency 3">
+            <label for="mode">Choose a mode:</label>
+            <select id="mode" name="mode">
+                <option value="MAJOR">MAJOR</option>
+                <option value="MINOR">MINOR</option>
+            </select>
+            <input type="submit" value ="Insert" class="btn btn-primary mb-2">
+        </form>
+
+     </div>
+
+    </div>
+
+    <div class="alert alert-info" role="alert"><p><span style="color:red">Success:</span> Insertion to table has been successful.</p></div>
+
+
+
+{% endblock %}
+
+<!-- Main External 3-Party JS Is Here -->
+
+{% block scripts %}
+
+{{ super() }}
+
+
+
+{% endblock%}
